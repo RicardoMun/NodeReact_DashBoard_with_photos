@@ -1,2 +1,7 @@
 ###
-GET http://localhost:3000/v1/category HTTP/1.1
+POST http://localhost:3000/v1/category/new-category HTTP/1.1
+
+{
+    "name": "prueba2",
+    "description": "Prueba de categoria json datos 2"
+}

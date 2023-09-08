@@ -5,12 +5,12 @@ const Category = require('../models/category.model');
 // Crear categoria
 
 const createCategory = async (req, res) => {
-    const category = new Category({
+    const category = await Category({
         name: req.body.name,
-        description: req.body.description,
+        description: req.body.description
     });
     const savedCategory = await category.save();
-    res.json(savedCategory);
+    res.status(201).json(savedCategory);
 };
 
 //GET ALL
