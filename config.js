@@ -4,7 +4,7 @@ DB_PASS = "admin1234"
 
 IP_SERVER = "localhost"
 API_VERSION = "v1"
-DB_PORT = "3000"
+DB_PORT = "443"
 
 JWT_CRETET_KEY = "clave_secreta_curso"
 
