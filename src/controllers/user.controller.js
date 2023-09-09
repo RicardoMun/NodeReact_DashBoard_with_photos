@@ -6,30 +6,32 @@ const jwt = require("../utils/jwt");
 
 // Crear usuario
 const register = async (req, res) => {
-    const { name, lastname, email, password, address } = req.body;
-    if (name!=null && lastname!=null && email!=null && password!=null && address!=null) {
-
-        //console.log("Contraseña: ", password);
-
-        const encriptar = await bcrypt.genSalt(10);
-        const contrasenia = await bcrypt.hash(password, encriptar);
-        //console.log("Contraseña encriptada: ", contrasenia);
-
-        const newUser = await User({
-            name,
-            lastname,
-            email: email.toLowerCase(),
-            password,
-            address,
-            active: true,
-            rol: "user"
-        })
-        console.log("Usuario creado: ", newUser);
-        const userDB = await newUser.save();
-        res.status(201).json(userDB);
-    } else {
-        console.log("Faltan datos");
-    }
+  const { name, lastmane, email, password, address } = req.body;
+  
+  if ( email != null && address != null) {
+      //console.log("Contraseña:", password); //Contraseña sin encriptar
+  
+      const crypt_password = await bcrypt.genSalt(10);
+      const final_password = await bcrypt.hash(password, crypt_password);
+  
+      //console.log("Contraseña encriptada:", final_password); //Contraseña encriptada
+  
+      const new_user = await User({
+          name,
+          lastmane,
+          email: email.toLowerCase(),
+          password: final_password,
+          address,
+          active: true,
+          rol: "user"
+      });
+      console.log("Usuario creado:" + new_user);
+      const userDB = await new_user.save();
+      res.status(201).json(userDB)
+  }else {
+      console.log("Faltan campos requeridos");
+      res.status(400).json({message: "Faltan campos requeridos"})
+  }
 };
 
 //login
