@@ -1,7 +1,33 @@
 ###
-POST http://localhost:3000/v1/category/new-category HTTP/1.1
+GET http://localhost:3000/v1/category HTTP/1.1
 
 {
     "name": "prueba2",
     "description": "Prueba de categoria json datos 2"
+}
+
+###
+POST http://localhost:3000/v1/service/new-service HTTP/1.1
+
+{
+    "name": "Servicio prueba",
+    "description": "Prueba de servicios LLegan datos pero no path img",
+    "category": "64fa102977c50139beea6ea6"
+}
+
+###
+GET http://localhost:3000/v1/service HTTP/1.1
+
+
+###
+POST http://localhost:3000/v1/user/signup HTTP/1.1
+
+{
+    "name": "polonio",
+    "lastname": "pa",
+    "email": "polonio@email.com",
+    "password": "1234hola",
+    "address": "64dbffe9ddf33c06596f4cbb",
+    "active": true,
+    "rol": "user"
 }

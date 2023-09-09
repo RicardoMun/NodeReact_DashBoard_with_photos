@@ -8,7 +8,7 @@ const path = require("path");
 
 // Configuracion de multer
 const storage = multer.diskStorage({
-  destination: "/src/upload/service",
+  destination: "/src/uploads/services",
   filename: (req, file, cb) => {
     cb(null, path.extname(file.originalname));
   },
@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({
   storage,
-}).single("photos");
+}).single('photos');
 
 // Rutas
 router.post( "/new-service", upload, serviceController.createService);
