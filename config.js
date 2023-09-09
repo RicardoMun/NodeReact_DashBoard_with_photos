@@ -2,7 +2,7 @@ DB_HOST = "cluster0.qr8oykn.mongodb.net"
 DB_USER = "admin"
 DB_PASS = "admin1234"
 
-IP_SERVER = "localhost"
+IP_SERVER = "0.0.0.0"
 API_VERSION = "v1"
 DB_PORT = "3000"
 
