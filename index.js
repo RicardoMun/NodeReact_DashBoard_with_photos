@@ -1,29 +1,29 @@
 const mongoose = require("mongoose");
 const app = require("./app")
 
-const {  DB_HOST, DB_USER, DB_PASS, DB_PORT, API_VERSION, IP_SERVER } = require("./config");
+const {
+    DB_PORT,
+    DB_USER,
+    PASSWORD,
+    DB_CLUSTER,
+} = require("./config");
 
-/*Local DB URI
-const DB_URI = `mongodb://${DB_USER}:${DB_PASSWORD}@${DB_SERVER_IP}:${DB_PORT}/${DB_NAME}?retryWrites=true&w=majority`;
-*/
-const DB_STRING = `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/`;
+
+const URI = `mongodb+srv://${DB_USER}:${PASSWORD}@${DB_CLUSTER}/?retryWrites=true&w=majority`;
 
 async function connectToDatabase() {
-    mongoose
-    .connect(DB_STRING)
-    .then( () => {
-            console.log("Connected to MongoDB database");
-            app.listen(DB_PORT, () => {
-                console.log("Server running on: ");
-                console.log(`IP_SERVER:\nhttp://${IP_SERVER}:${DB_PORT}/${API_VERSION}`)
-            });
-        }
-    )
-    .catch(
-        (err) => {
-            console.error(err)
-        }
-    )
+    try{
+        await mongoose.connect(URI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        console.log("Connection to database successful");
+        app.listen(DB_PORT, () => {
+            console.log("API RESTful running on port: ", DB_PORT);
+        });
+    }catch(error){
+        console.log(error);
+    }
 };
 
 connectToDatabase().catch(console.error);

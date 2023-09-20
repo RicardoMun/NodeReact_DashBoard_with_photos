@@ -1,19 +1,10 @@
-DB_HOST = "cluster0.qr8oykn.mongodb.net"
-DB_USER = "admin"
-DB_PASS = "admin1234"
-
-IP_SERVER = "localhost"
-API_VERSION = "v1"
-DB_PORT = "3000"
-
-JWT_CRETET_KEY = "clave_secreta_curso"
+require("dotenv").config();
 
 module.exports = {
-    DB_HOST,
-    DB_USER,
-    DB_PASS,
-    IP_SERVER,
-    API_VERSION,
-    DB_PORT,
-    JWT_CRETET_KEY
+    API_VERSION: "v1",
+    DB_USER: process.env.DB_USER,
+    PASSWORD: process.env.PASSWORD,
+    DB_CLUSTER: process.env.DB_CLUSTER,
+    DB_PORT: process.env.DB_PORT,
+    JWT_SECRET_KEY: process.env.JWT_SECRET_KEY,
 }
