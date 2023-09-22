@@ -8,8 +8,8 @@ const {
     DB_CLUSTER,
 } = require("./config");
 
-
-const URI = `mongodb+srv://${DB_USER}:${PASSWORD}@${DB_CLUSTER}/?retryWrites=true&w=majority`;
+/* mongodb+srv://ricardo:<password>@proyectodesarrollo.gx4izut.mongodb.net/ */
+const URI = `mongodb+srv://${DB_USER}:${PASSWORD}@${DB_CLUSTER}`;
 
 async function connectToDatabase() {
     try{
